@@ -1,0 +1,29 @@
+function insertionSortAnalyzer(arr, comparator) {
+  let iterations = 0;
+  let swaps = 0;
+
+  for (let i = 1; i < arr.length; i++) {
+    let j = i;
+
+    while (j > 0) {
+      iterations++;
+
+      if (comparator(arr[j - 1], arr[j]) > 0) {
+        let temp = arr[j];
+        arr[j] = arr[j - 1];
+        arr[j - 1] = temp;
+
+        swaps++;
+        j--;
+      } else {
+        break;
+      }
+    }
+  }
+
+  return {
+    sortedArray: arr,
+    iterations,
+    swaps,
+  };
+}
