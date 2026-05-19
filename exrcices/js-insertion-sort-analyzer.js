@@ -1,29 +1,27 @@
 function insertionSortAnalyzer(arr, comparator) {
-  let iterations = 0;
-  let swaps = 0;
+  let swap = 0;
+  let iteration = 0;
 
-  for (let i = 1; i < arr.length; i++) {
-    let j = i;
-
-    while (j > 0) {
-      iterations++;
-
-      if (comparator(arr[j - 1], arr[j]) > 0) {
-        let temp = arr[j];
-        arr[j] = arr[j - 1];
-        arr[j - 1] = temp;
-
-        swaps++;
-        j--;
-      } else {
-        break;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i+1; j < arr.length; j++) {
+      if (comparator(arr[i], arr[j]) < 0) {
+        let temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+        swap++;
       }
+      iteration++;
     }
   }
 
   return {
-    sortedArray: arr,
-    iterations,
-    swaps,
+    swap,
+    iteration,
+    arr,
   };
 }
+const comparator = (a, b) => a - b;
+
+const result = insertionSortAnalyzer([5, 2, 4, 6, 1, 3], comparator);
+
+console.log(result);

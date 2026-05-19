@@ -1,6 +1,9 @@
     function gridWordsFinder(grid, words) {
         let strs = [];
         let res = ""
+        if (grid.length === 0){
+            return [];
+        }
         for (let i = 0; i < grid.length; i++){
             strs.push(grid[i].join(''))
         }
@@ -22,14 +25,14 @@
         }
         return [...new Set(found)]
     }
-    const grid = [
-    ["c", "a", "t"],
-    ["a", "a", "t"],
-    ["r", "a", "t"],
-    ["d", "o", "g"],
-    ];
+    // const grid = [
+    // ["c", "a", "t"],
+    // ["a", "a", "t"],
+    // ["r", "a", "t"],
+    // ["d", "o", "g"],
+    // ];
 
-    console.log(
-    gridWordsFinder(grid, ["cat", "dog", "rat", "tar", "car", "rac", "g"]),
-    );
-    console.log(gridWordsFinder(grid, []));
+    // console.log(
+    // gridWordsFinder(grid, ["cat", "dog", "rat", "tar", "car", "rac", "g"]),
+    // );
+    // console.log(gridWordsFinder(grid, []));
