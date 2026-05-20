@@ -1,26 +1,37 @@
 function gridWordFinder2(grid, word) {
-    let result = {}
-    let ari = []
-    let ver = []
-    let res = ""
+    if (word === ""){
+        return []
+    }
+    let result = [];
+    // horisontal
     for (let i = 0; i < grid.length; i++){
-        ver.push(grid[i].join(""));
-    }
-    for (let i = 0; i < grid[0].length; i++){
-        for(let j = 0; j < grid.length; j++){
-            res += grid[j][i];
+        let row = grid[i].join('');
+        let index = row.indexOf(word)
+        if (index !== -1){
+            result.push({x:index, y:i, direction: "horizontal"})
         }
-        ori.push(res)
-        res = ""
     }
-    let ori1 = ver.join(" ");
-    let ver1 = ori.join(" ");
-    console.log(ori)
+    //vertical
+    for (let i = 0; i < grid[0].length; i++){
+        let col = ""
+        for (let j = 0; j < grid.length; j++){
+            col += grid[j][i];
+        }
+        console.log(col)
+        let index = col.indexOf(word)
+        if (index !== -1){
+            result.push({x:i, y:index, direction: "vertical"})
+        }
+    }
+    return result
 }
-const grid = [
-  ["c", "a", "t"],
-  ["d", "o", "g"],
-  ["r", "a", "t"],
-];
+// const grid = [
+//   ["c", "d", "r"],
+//   ["a", "o", "a"],
+//   ["t", "g", "t"],
+//   ["c", "d",  "r"],
+//   ["a", "o", "a"],
+//   ["t", "g", "t"]
+// ];
 
-console.log(gridWordFinder2(grid, "cat"));
+// console.log(gridWordFinder2(grid, "dog"));
